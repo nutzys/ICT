@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ProductAttributes;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Spatie\FlareClient\Http\Exceptions\NotFound;
 
 class ProductsController extends Controller
 {
@@ -24,7 +26,15 @@ class ProductsController extends Controller
 
     public function show($id)
     {
-        return Products::find($id);
+        $product = Products::find($id);
+
+        if(!$product){
+            return response()->json(['error' => 'Record not found'], 404);
+        }
+        return response([
+            'product' => $product,
+            'attributes' => ProductAttributes::find($id),
+        ]);
     }
 
     public function update(Request $request, $id)

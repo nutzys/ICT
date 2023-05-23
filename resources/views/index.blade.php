@@ -7,6 +7,6 @@
     <title>ICT</title>
 </head>
 <body>
-    
+    Index page
 </body>
 </html>

@@ -14,6 +14,6 @@ class Products extends Model
     use HasFactory;
 
     public function attributes(){
-        return $this->hasMany(Products::class, 'id', 'product_id');
+        return $this->hasOne(ProductAttributes::class, 'id', 'product_id');
     }
 }
