@@ -33,7 +33,7 @@ class ProductsController extends Controller
         }
         return response([
             'product' => $product,
-            'attributes' => ProductAttributes::find($id),
+            'attributes' => ProductAttributes::where('product_id', '=', $id)->get(),
         ]);
     }
 

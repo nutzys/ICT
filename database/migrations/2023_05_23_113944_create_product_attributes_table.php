@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('product_id')->references('id')->on('products');
+            $table->foreignId('product_id')->references('id')->on('products')->onDelete('cascade');
             $table->string('weight');
             $table->string('taste');
             $table->string('height');
